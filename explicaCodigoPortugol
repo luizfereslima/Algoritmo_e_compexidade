@@ -1,0 +1,11 @@
+função somaAuxiliar(vetor, indice, resultado):
+    se indice == tamanho(vetor) então:
+        retorne resultado
+    senão:
+        retorne somaAuxiliar(vetor, indice + 1, resultado + vetor[indice])  // Chamada recursiva em cauda
+
+função somaVetor(vetor):
+    retorne somaAuxiliar(vetor, 0, 0)
+
+vetor = [1, 2, 3, 4, 5]
+escreva("A soma dos elementos da lista é: ", somaVetor(vetor))
