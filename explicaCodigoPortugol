@@ -1,11 +1,103 @@
-função somaAuxiliar(vetor, indice, resultado):
-    se indice == tamanho(vetor) então:
-        retorne resultado
-    senão:
-        retorne somaAuxiliar(vetor, indice + 1, resultado + vetor[indice])  // Chamada recursiva em cauda
+algoritmo "Calculadora com Recursividade em Cauda"
 
-função somaVetor(vetor):
-    retorne somaAuxiliar(vetor, 0, 0)
+// Função para calcular o MDC usando recursividade em cauda
+funcao inteiro mdc(inteiro a, inteiro b, inteiro acumulador)
+inicio
+    // Inicialização do acumulador na primeira chamada
+    se (acumulador = 0) entao
+        se (b = 0) entao
+            acumulador := a
+        senao
+            acumulador := b
+        fimse
+    fimse
 
-vetor = [1, 2, 3, 4, 5]
-escreva("A soma dos elementos da lista é: ", somaVetor(vetor))
+    // Caso base: quando b é zero, retorna o acumulador
+    se (b = 0) entao
+        retorne acumulador
+    fimse
+
+    // Chamada recursiva em cauda: atualiza os valores de a, b e o acumulador
+    retorne mdc(b, a % b, b)
+fimfuncao
+
+// Função para somar dois números
+funcao inteiro somar(inteiro a, inteiro b)
+inicio
+    retorne a + b
+fimfuncao
+
+// Função para subtrair dois números
+funcao inteiro subtrair(inteiro a, inteiro b)
+inicio
+    retorne a - b
+fimfuncao
+
+// Função para multiplicar dois números
+funcao inteiro multiplicar(inteiro a, inteiro b)
+inicio
+    retorne a * b
+fimfuncao
+
+// Função para dividir dois números
+funcao real dividir(inteiro a, inteiro b)
+inicio
+    se (b = 0) entao
+        escreva("Não é possível dividir por zero!")
+        retorne 0
+    fimse
+    retorne a / b
+fimfuncao
+
+// Função principal da calculadora
+funcao vazio calculadora()
+inicio
+    enquanto (verdadeiro) faca
+        escreval("Opções:")
+        escreval("Digite 'somar' para somar dois números")
+        escreval("Digite 'subtrair' para subtrair dois números")
+        escreval("Digite 'multiplicar' para multiplicar dois números")
+        escreval("Digite 'dividir' para dividir dois números")
+        escreval("Digite 'mdc' para encontrar o máximo divisor comum de dois números")
+        escreval("Digite 'sair' para encerrar o programa")
+
+        escreva(": ")
+        leia(entrada_usuario)
+        
+        se (entrada_usuario = "sair") entao
+            pare
+        senao
+            se (entrada_usuario = "somar" ou entrada_usuario = "subtrair" ou entrada_usuario = "multiplicar" ou entrada_usuario = "dividir" ou entrada_usuario = "mdc") entao
+                escreva("Digite o primeiro número: ")
+                leia(num1)
+                escreva("Digite o segundo número: ")
+                leia(num2)
+                
+                se (entrada_usuario = "somar") entao
+                    escreval("Resultado: ", somar(num1, num2))
+                senao
+                    se (entrada_usuario = "subtrair") entao
+                        escreval("Resultado: ", subtrair(num1, num2))
+                    senao
+                        se (entrada_usuario = "multiplicar") entao
+                            escreval("Resultado: ", multiplicar(num1, num2))
+                        senao
+                            se (entrada_usuario = "dividir") entao
+                                escreval("Resultado: ", dividir(num1, num2))
+                            senao
+                                se (entrada_usuario = "mdc") entao
+                                    escreval("Resultado: ", mdc(num1, num2, 0))
+                                fimse
+                            fimse
+                        fimse
+                    fimse
+                fimse
+            fimse
+        fimse
+    fimenquanto
+fimfuncao
+
+// Execução da calculadora
+inicio
+    calculadora()
+fimalgoritmo
