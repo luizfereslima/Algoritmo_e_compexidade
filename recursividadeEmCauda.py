@@ -3,7 +3,7 @@ def mdc(a, b, acumulador=None):
     if acumulador is None:
         acumulador = a if b == 0 else b
 
-    # Caso base: quando b é zero, retorna o acumulador
+    # Quando b é zero, retorna o acumulador
     if b == 0:
         return acumulador
 
